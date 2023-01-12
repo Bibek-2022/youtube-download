@@ -1,25 +1,25 @@
 import express, { Router } from "express";
 import ytdl from "ytdl-core";
 const route = express.Router();
-
+import fs from "fs";
 route.post("/", async (req, res, next) => {
   // get request by sending url for youtube video
   try {
-    // download video in mp3
-    console.log(req.body.url);
-    const url = req.body.url;
-    const info = await ytdl.getInfo(url);
-    const format = ytdl.chooseFormat(info.formats, { quality: "140" });
-    res.header(
-      "Content-Disposition",
-      `attachment; filename="${info.videoDetails.title}.mp3"`
-    );
-    ytdl(url, { format: format }).pipe(res);
+    const r = req.body.url;
+
+    console.log(r);
+    ytdl(r, { filter: "audioonly" })
+      .pipe(fs.createWriteStream("video.mp3"))
+      .on("error", function (err) {
+        console.log(err);
+      });
+    res.json({
+      status: "success",
+      message: "video downloaded",
+    });
   } catch (error) {
     next(error);
   }
 });
-
-route.post("/", async (req, res, next) => {});
 
 export default route;

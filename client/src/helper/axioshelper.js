@@ -20,5 +20,6 @@ const apiProcessor = async (method, url, data) => {
 };
 
 export const downloadVideo = (obj) => {
-  return apiProcessor("get", rootUrl, obj);
+  console.log(obj);
+  return apiProcessor("post", rootUrl, obj);
 };

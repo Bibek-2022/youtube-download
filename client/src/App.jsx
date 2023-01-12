@@ -1,18 +1,19 @@
 import { useState } from "react";
 import "./App.css";
 import { downloadVideo } from "./helper/axioshelper";
-const [form, setForm] = useState({});
 
 function App() {
-  const [count, setCount] = useState(0);
-  const handleOnSubmit = (e) => {
+  const [form, setForm] = useState({});
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Submitted");
+
+    const result = await downloadVideo(form);
   };
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-    downloadVideo(form);
+
     // console.log(form);
   };
   return (
@@ -22,6 +23,7 @@ function App() {
       <form className="form" onSubmit={handleOnSubmit}>
         <input
           type="text"
+          name="url"
           placeholder="Enter Youtube URL"
           onChange={handleOnChange}
         />
