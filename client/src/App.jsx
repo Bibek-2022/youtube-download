@@ -3,6 +3,7 @@ import "./App.css";
 import { downloadVideo } from "./helper/axioshelper";
 import { Button } from "@nextui-org/react";
 import { Input, Grid } from "@nextui-org/react";
+import { Text } from "@nextui-org/react";
 function App() {
   const [form, setForm] = useState({});
   const handleOnSubmit = async (e) => {
@@ -19,9 +20,40 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>Youtube Video to MP3 Downloader</h1>
+      <>
+        <Text
+          h1
+          size={60}
+          css={{
+            textGradient: "45deg, $blue600 -20%, $pink600 50%",
+          }}
+          weight="bold"
+        >
+          Download
+        </Text>
+        <Text
+          h1
+          size={60}
+          css={{
+            textGradient: "45deg, $purple600 -20%, $pink600 100%",
+          }}
+          weight="bold"
+        >
+          Youtube Videos
+        </Text>
+        <Text
+          h1
+          size={60}
+          css={{
+            textGradient: "45deg, $yellow600 -20%, $red600 100%",
+          }}
+          weight="bold"
+        >
+          in MP3
+        </Text>
+      </>
       {/* Create a Form Input for the url of youtube*/}
-      <form className="form" onSubmit={handleOnSubmit}>
+      <form className="form spc" onSubmit={handleOnSubmit}>
         {/* <input
           type="text"
           name="url"
@@ -34,8 +66,9 @@ function App() {
           type="text"
           name="url"
           onChange={handleOnChange}
+          className="spc1"
         />
-        <Button color="success" type="submit">
+        <Button color="success" type="submit" className="siz">
           Submit
         </Button>
       </form>
