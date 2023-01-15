@@ -8,6 +8,12 @@ route.post("/", async (req, res, next) => {
     const r = req.body.url;
 
     console.log(r);
+    if (r == null) {
+      return res.status(400).json({
+        status: "error",
+        message: "url is required",
+      });
+    }
     ytdl(r, { filter: "audioonly" })
       .pipe(fs.createWriteStream("video.mp3"))
       .on("error", function (err) {

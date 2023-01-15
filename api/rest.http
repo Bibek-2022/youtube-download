@@ -6,6 +6,6 @@ GET  http://localhost:8000/api/downloadYoutubeVideo
 Content-Type: application/json
 
 {
-   "url": "https://www.youtube.com/watch?v=41ocqQXRRLI",
+   "url": "https://www.youtube.com/watch?v=41ocqQXRRLI"
   
 }
