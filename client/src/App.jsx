@@ -22,8 +22,8 @@ function App() {
   return (
     <div className="App">
       {/* Wrap inside card */}
-      <Card css={{ mw: "600px" }}>
-        <Card.Body>
+      <Card css={{ mw: "600px" }} className="App1">
+        <Card.Body className="App2">
           <>
             <Text h1 size={60} weight="bold">
               Download
@@ -51,7 +51,7 @@ function App() {
               onChange={handleOnChange}
               className="spc1"
             />
-            <Button color="success" type="submit" className="siz">
+            <Button type="submit" className="siz">
               Submit
             </Button>
           </form>
